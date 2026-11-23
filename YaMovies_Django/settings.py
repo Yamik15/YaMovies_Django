@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -49,12 +50,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Пусть Django использует кастомную модель юзера
+AUTH_USER_MODEL = 'core.User'
+
 ROOT_URLCONF = 'YaMovies_Django.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,7 +119,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
+LOGIN_REDIRECT_URL = 'profile' # перенаправляем в профиль после входа
+LOGOUT_REDIRECT_URL = 'home' # перенаправляем на главную после выхода
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
