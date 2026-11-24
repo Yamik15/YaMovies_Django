@@ -4,7 +4,7 @@ from .models import User, Genre, Movie, Review
 
 class CustomUserAdmin(UserAdmin):
   fieldsets = UserAdmin.fieldsets + (
-		(None, {'fields': ('full_name', 'birth_date', 'gender')})
+		(None, {'fields': ('full_name', 'birth_date', 'gender')}),
 	)
   
 admin.site.register(User, CustomUserAdmin)
