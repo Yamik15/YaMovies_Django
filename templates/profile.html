@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="profile-header">
+	<h1 class="profile-title">Профиль: {{ user.username }}</h1>
+	<p class="profile-row">Email: {{ user.email }}</p>
+	<p class="profile-row">ФИО: {{ user.full_name }}</p>
+</section>
+
+<section class="profile-section">
+	<h2 class="section-title">Оставить отзыв</h2>
+	<div class="review-form-container">
+		<form method="post" class="review">
+			{% csrf_token %}
+			<input type="hidden" name="action" value="add">
+			{{ form.as_p }}
+			<button type="submit" class="btn btn-full">Отправить отзыв</button>
+		</form>
+	</div>
+</section>
+
+<section class="profile-section">
+	<h2 class="section-title">Мои отзывы</h2>
+	{% for review in reviews %}
+	<div class="review-item">
+		<div class="review-item-body">
+			<h4 class="review-item-title">Фильм: <a href="{% url 'movie_detail' review.movie_id %}">{{ review.movie.title }}</a></h4>
+			<p class="review-item-text">{{ review.description }}</p>
+		</div>
+		<form action="{% url 'profile' %}" method="post" class="review-item-form">
+			{% csrf_token %}
+			<input type="hidden" name="action" value="delete">
+			<input type="hidden" name="review_id" value="{{ review.id }}">
+			<button type="submit" class="btn btn-danger">Удалить</button>
+		</form>
+	</div>
+	{% empty %}
+	<p class="review-empty">Вы пока не оставили ни одного отзыва.</p>
+	{% endfor %}
+</section>
+{% endblock %}

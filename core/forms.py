@@ -10,3 +10,14 @@ class CustomUserCreationForm(UserCreationForm):
   class Meta(UserCreationForm.Meta):
     model = User
     fields = ("username", "email", "full_name", "birth_date", "gender")
+    
+class ReviewForm(forms.ModelForm):
+  class Meta:
+    model = Review
+    fields = ['movie', 'description']
+    widgets = {
+      'description': forms.Textarea(attrs={
+        'rows': 4,
+        'placeholder': 'Напишите ваш отзыв...',
+      }),
+    }
