@@ -1,0 +1,132 @@
+.catalog-header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	margin-bottom: var(--space-5);
+}
+
+.catalog-title {
+	font-size: var(--font-size-xl);
+}
+
+.genre-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+}
+
+.filter-btn {
+	display: inline-block;
+	background-color: var(--color-surface);
+	color: var(--color-text);
+	padding: var(--space-1) var(--space-3);
+	border-radius: var(--radius-md);
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	border: 1px solid var(--color-border);
+	transition: var(--transition-fast);
+}
+
+.filter-btn:hover {
+	border-color: var(--color-accent);
+}
+
+.movies-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-4);
+}
+
+.movie-card {
+	background-color: var(--color-surface);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-card);
+	display: flex;
+	flex-direction: column;
+	transition: var(--transition-fast);
+}
+
+.movie-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(245, 166, 35, 0.15);
+}
+
+.movie-link {
+	display: block;
+	flex: 1;
+}
+
+.movie-poster {
+	width: 100%;
+	aspect-ratio: 2 / 3;
+	object-fit: cover;
+	display: block;
+}
+
+.movie-info {
+	padding: var(--space-3);
+}
+
+.movie-title {
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--space-1);
+}
+
+.movie-meta {
+	color: var(--color-text-muted);
+	font-size: var(--font-size-sm);
+	margin-bottom: var(--space-2);
+}
+
+.movie-rating {
+	font-weight: bold;
+	color: var(--color-accent);
+}
+
+.movie-review-btn {
+	display: block;
+	text-align: center;
+	background-color: var(--color-accent);
+	color: #FFFFFF;
+	padding: var(--space-2) var(--space-3);
+	font-weight: bold;
+	font-size: var(--font-size-sm);
+	transition: var(--transition-fast);
+}
+
+.movie-review-btn:hover {
+	background-color: var(--color-accent-hover);
+}
+
+.catalog-empty {
+	color: var(--color-text-muted);
+	grid-column: 1 / -1;
+	text-align: center;
+	padding: var(--space-6);
+}
+
+@media (min-width: 768px) {
+	.catalog-header {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.movies-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.movies-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (min-width: 1440px) {
+	.movies-grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-5);
+	}
+}

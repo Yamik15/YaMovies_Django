@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="catalog-header">
+	<h1 class="catalog-title">Каталог фильмов</h1>
+	<div class="genre-filters">
+		<a href="{% url 'catalog' %}" class="filter-btn">Все</a>
+		{% for genre in genres %}
+		<a href="?genre={{ genre.id }}" class="filter-btn">{{ genre.title }}</a>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="movies-grid">
+	{% for movie in movies %}
+	<div class="movie-card">
+		<a href="{% url 'movie_detail' movie.id %}" class="movie-link">
+			<img src="{% static 'images/posters/'|add:movie.poster_name %}" alt="{{ movie.title }}" class="movie-poster">
+			<div class="movie-info">
+				<h3 class="movie-title">{{ movie.title }}</h3>
+				<p class="movie-meta">{{ movie.year }} | {{ movie.genre.title }}</p>
+				<p class="movie-rating">⭐ {{ movie.rating }}</p>
+			</div>
+		</a>
+		{% if user.is_authenticated %}
+		<a href="{% url 'profile' %}?movie={{ movie.id }}" class="btn btn-full movie-review-btn">Оставить отзыв</a>
+		{% endif %}
+	</div>
+	{% empty %}
+	<p class="catalog-empty">Фильмов пока нет</p>
+	{% endfor %}
+</div>
+{% endblock %}
