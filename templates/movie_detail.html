@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/movie_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="movie-detail">
+	<img src="{% static 'images/posters/'|add:movie.poster_name %}" alt="{{ movie.title }}" class="detail-poster">
+	<div class="movie-detail-info">
+		<h1 class="detail-title">{{ movie.title }} ({{ movie.year }})</h1>
+		<h3 class="detail-original">{{ movie.original_title }}</h3>
+		<p class="detail-row"><strong>Жанр:</strong> {{ movie.genre.title }}</p>
+		<p class="detail-row"><strong>Рейтинг:</strong>⭐ {{ movie.rating }}</p>
+		<p class="detail-description">{{ movie.description }}</p>
+		{% if user.is_authenticated %}
+		<a href="{% url 'profile' %}?movie={{ movie.id }}" class="btn detail-btn">Оставить отзыв</a>
+		{% else %}
+		<p class="login-prompt">Войдите, чтобы оставить отзыв.</p>
+		{% endif %}
+	</div>
+</article>
+
+<section class="reviews-section">
+	<h2 class="reviews-title">Отзывы</h2>
+	{% for review in movie.reviews.all %}
+	<div class="review-card">
+		<div class="review-header">
+			<span class="review-author">{{ review.user.username }}</span>
+			<span class="review-date">{{ review.created_at|date:"d.m.Y H:i" }}</span>
+		</div>
+		<p class="review-text">{{ review.description }}</p>
+	</div>
+	{% empty %}
+	<p class="review-empty">Пока нет отзывов. Будьте первым!</p>
+	{% endfor %}
+</section>
+{% endblock %}

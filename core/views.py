@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import login
 from .forms import CustomUserCreationForm
@@ -16,7 +16,8 @@ def catalog_view(request):
   return render(request, 'catalog.html', {'movies': movies, 'genres': genres})
 
 def movie_detail_view(request, pk):
-  return HttpResponse(f"Заглушка: фильм {pk}")
+  movie = get_object_or_404(Movie, pk=pk)
+  return render(request, 'movie_detail.html', {'movie': movie})
 
 def profile_view(request):
   return HttpResponse("Заглушка: профиль")

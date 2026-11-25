@@ -1,0 +1,134 @@
+.movie-detail {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	background-color: var(--color-surface);
+	padding: var(--space-4);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-card);
+	margin-bottom: var(--space-6);
+}
+
+.detail-poster {
+	width: 100%;
+	max-width: 300px;
+	aspect-ratio: 2 / 3;
+	object-fit: cover;
+	border-radius: var(--radius-md);
+	align-self: center;
+	display: block;
+	flex-shrink: 0;
+}
+
+.movie-detail-info {
+	flex: 1;
+}
+
+.detail-title {
+	font-size: var(--font-size-xl);
+	margin-bottom: var(--space-1);
+}
+
+.detail-original {
+	color: var(--color-text-muted);
+	font-size: var(--font-size-base);
+	font-weight: normal;
+	margin-bottom: var(--space-3);
+}
+
+.detail-row {
+	margin-bottom: var(--space-2);
+}
+
+.detail-description {
+	margin: var(--space-3) 0;
+	line-height: 1.6;
+}
+
+.detail-btn {
+	margin-top: var(--space-3);
+}
+
+.login-prompt {
+	color: var(--color-error);
+	margin-top: var(--space-3);
+	font-size: var(--font-size-sm);
+}
+
+.reviews-section {
+	margin-top: var(--space-5);
+}
+
+.reviews-title {
+	font-size: var(--font-size-xl);
+	margin-bottom: var(--space-4);
+}
+
+.review-card {
+	background-color: var(--color-surface);
+	padding: var(--space-3);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-card);
+	margin-bottom: var(--space-3);
+}
+
+.review-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-bottom: var(--space-2);
+	font-size: var(--font-size-sm);
+}
+
+.review-author {
+	font-weight: bold;
+}
+
+.review-date {
+	color: var(--color-text-muted);
+}
+
+.review-text {
+	line-height: 1.6;
+}
+
+.review-empty {
+	color: var(--color-text-muted);
+	padding: var(--space-4);
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.movie-detail {
+		flex-direction: row;
+		padding: var(--space-5);
+	}
+
+	.detail-poster {
+		max-width: 280px;
+		align-self: flex-start;
+	}
+}
+
+@media (min-width: 1024px) {
+	.movie-detail {
+		gap: var(--space-5);
+	}
+
+	.detail-poster {
+		max-width: 320px;
+	}
+}
+
+@media (min-width: 1440px) {
+	.movie-detail {
+		padding: var(--space-6);
+		gap: var(--space-6);
+	}
+
+	.detail-poster {
+		max-width: 380px;
+	}
+}
