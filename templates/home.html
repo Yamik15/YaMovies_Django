@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+	<h1 class="hero-title">Добро пожаловать в YaMovies!</h1>
+	<p class="hero-text">Смотрите лучшие фильмы, оставляйте отзывы и делитесь мнением</p>
+	<a href="{% url 'catalog' %}" class="btn hero-btn">Перейти в каталог</a>
+</section>
+{% endblock %}

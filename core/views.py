@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from .forms import CustomUserCreationForm
 
 def home_view(request):
-  return HttpResponse("Заглушка: главная")
+  return render(request, 'home.html')
 
 def catalog_view(request):
   return HttpResponse("Заглушка: каталог")
