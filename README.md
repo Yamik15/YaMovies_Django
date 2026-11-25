@@ -12,25 +12,43 @@ Educational project — an online cinema with a movie catalog, user authenticati
 
 ## Getting Started
 
-### 1. Install dependencies
+### 1. Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+### 2. Activate it
+
+Windows:
+```bash
+.venv\Scripts\activate
+```
+
+macOS / Linux:
+```bash
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Apply migrations
+### 4. Apply migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 3. Create superuser
+### 5. Create superuser
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 4. Run
+### 6. Run
 
 ```bash
 python manage.py runserver
