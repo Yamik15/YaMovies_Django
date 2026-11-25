@@ -10,6 +10,9 @@ class CustomUserCreationForm(UserCreationForm):
   class Meta(UserCreationForm.Meta):
     model = User
     fields = ("username", "email", "full_name", "birth_date", "gender")
+    labels = {
+      'gender': 'Gender',
+    }
     
 class ReviewForm(forms.ModelForm):
   class Meta:

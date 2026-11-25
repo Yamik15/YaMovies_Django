@@ -109,6 +109,12 @@ a {
 	background-color: var(--color-accent-hover);
 }
 
+.btn-full {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
 .btn-secondary {
 	background-color: var(--color-surface-2);
 	color: var(--color-text);

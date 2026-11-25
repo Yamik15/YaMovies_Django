@@ -18,7 +18,15 @@
 		<form method="post" class="review">
 			{% csrf_token %}
 			<input type="hidden" name="action" value="add">
-			{{ form.as_p }}
+			{% for field in form %}
+			<div class="form-group">
+				<label for="{{ field.id_for_label }}">{{ field.label }}</label>
+				{{ field }}
+				{% if field.errors %}
+				<span class="field-error">{{ field.errors.0 }}</span>
+				{% endif %}
+			</div>
+			{% endfor %}
 			<button type="submit" class="btn btn-full">Отправить отзыв</button>
 		</form>
 	</div>

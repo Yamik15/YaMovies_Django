@@ -31,8 +31,8 @@ class Movie(models.Model):
 	
 class Review(models.Model):
   description = models.TextField(verbose_name="Текст отзыва")
-  movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="revies", verbose_name="Фильм")
-  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="revies", verbose_name="Пользователь")
+  movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="reviews", verbose_name="Фильм")
+  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviews", verbose_name="Пользователь")
   created_at = models.DateTimeField(auto_now_add=True)
   
   def __str__(self):
